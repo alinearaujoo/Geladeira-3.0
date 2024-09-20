@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -103,61 +103,63 @@ namespace GeladeiraAPI.Domain
         //Implementando API ao sistema
 
         //Retorna todos os itens
-        public List<Item> GetAllItems() 
+        public List<Item> GetAllItems()
         {
-            return Andar.SelectMany(andar => andar.Containers.SelectMany(container => container.Itens)).ToList(); //Retorna os itens de todos os containers do andar
+            return Andares.SelectMany(andar => andar.Containers().SelectMany(container => container.Items())).ToList();
         }
 
         //Retorna o item específico mostrando o andar e a posição
-        public (Item item, int andar, int container)? GetItemById(int id) //Retorna o item com o id especificado
+        public (Item item, int andar, int container)? GetItemById(int id) 
         {
-            foreach (var andar in Andares) //Itera sobre todos os andares
+            foreach (var andar in Andares) 
             {
-                foreach (var container in andar.Containers) //Itera sobre todos os containers do andar
+                foreach (var container in andar.Containers())
                 {
-                    var item = container.Itens.FirstOrDefault(i => i.Id == id); //Retorna o item com o id especificado
-                    if (item != null) //Se o item foi encontrado
+                    var item = container.Items().FirstOrDefault(i => i.IdItem == id); 
+                    if (item != null) 
                     {
-                        return (item, andar.Numero, container.Id); //Retorna o item, o andar e a posição
+                        return (item, andar.Numero, container.NumeroContainer);
                     }
                 }
             }
-            return null; //Se o item não foi encontrado, retorna null
+            return null; 
         }
 
-        public void AddItem(Item item, int andar, int container) //Adiciona um item ao container
+        public void AddItem(Item item, int andar, int container) 
         {
-            Andares[andar].Containers[container].AdicionarItem(item); //Adiciona o item ao container especificado
+            int posicao = 1;
+            Andares[andar].Containers()[container].AdicionarItem(posicao, item); 
         }
 
-        public void UpdateItem(int id, Item newItem) //Atualiza um item
+        public void UpdateItem(int id, Item newItem) 
         {
             //Retorna o item específico mostrando o andar e a posição
-            var itemInfo = GetItemById(id); //Retorna o item com o id especificado
-            if (itemInfo != null) //Se o item foi encontrado
+            var itemInfo = GetItemById(id); 
+            if (itemInfo != null) 
             {
-                var (item, andar, container) = itemInfo.Value; //Retorna o item, o andar e a posição
-                item.IdItem = newItem.IdItem; //Atualiza o identificador do item
-                item.Descricao = newItem.Descricao; //Atualiza a descrição do item
+                var (item, andar, container) = itemInfo.Value; 
+                item.IdItem = newItem.IdItem;
+                item.Descricao = newItem.Descricao;
             }
         }
 
         //Exclui um item de uma posição
-        public void DeleteItem(int id) //Exclui um item
+        public void DeleteItem(int id) 
         {
-            foreach (var andar in Andares) //Itera sobre todos os andares
+            foreach (var andar in Andares) 
             {
-                foreach (var container in andar.Containers) //Itera sobre todos os containers do andar
+                foreach (var container in andar.Containers()) 
                 {
-                    var item = container.Itens.FirstOrDefault(i => i.Id == id); //Retorna o item com o id especificado
-                    if (item != null) //Se o item foi encontrado
+                    var item = container.Items().FirstOrDefault(i => i.IdItem == id); 
+                    if (item != null) 
                     {
-                        container.Itens.Remove(item); //Remove o item do container
-                        return; //Retorna
+                        container.Items().Remove(item);
+                        return; 
                     }
                 }
             }
         }
     }
 }
+
 

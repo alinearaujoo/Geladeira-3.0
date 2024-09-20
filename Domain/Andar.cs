@@ -62,5 +62,10 @@ namespace GeladeiraAPI.Domain
             }
             return sb.ToString(); // Retorna a string com o conteúdo formatado
         }
+
+        public List<Container> Containers()
+        {
+            return this._containers;
+        }
     }
 }

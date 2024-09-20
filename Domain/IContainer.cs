@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace GeladeiraAPI.Domain
 {
-    internal interface IContainer //Criando a interface IContainer
+    internal interface IContainer 
     {
-        void AdicionarItem(int posicao, Item item); //Criando o metodo AdicionarItem
-        Item? RetornarItem(int posicao); //Criando o metodo RetornarItem
-        void RemoverItem(int posicao); //Criando o metodo RemoverItem
+        void AdicionarItem(int posicao, Item item); 
+        Item? RetornarItem(int posicao); 
+        void RemoverItem(int posicao); 
     }
 }

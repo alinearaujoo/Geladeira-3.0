@@ -3,11 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35219.272
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{2F8DE554-BF58-478B-868A-1AFFCD9E5247}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{2F8DE554-BF58-478B-868A-1AFFCD9E5247}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geladeira Console", "Geladeira Console\Geladeira Console.csproj", "{68474BF0-F4AD-45E0-8337-F32FCE9F0776}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Geladeira Console", "Geladeira Console\Geladeira Console.csproj", "{68474BF0-F4AD-45E0-8337-F32FCE9F0776}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeladeiraAPI", "GeladeiraAPI\GeladeiraAPI.csproj", "{7FF2BC3C-E855-417F-88A8-52BE02794843}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeladeiraAPI", "GeladeiraAPI\GeladeiraAPI.csproj", "{7FF2BC3C-E855-417F-88A8-52BE02794843}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Repository\Repository.csproj", "{CA59001D-9DA4-4CF6-A07E-F3A194991537}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{DDCD3B4C-9A1E-4260-ABFF-DBA84707308E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,14 @@ Global
 		{7FF2BC3C-E855-417F-88A8-52BE02794843}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FF2BC3C-E855-417F-88A8-52BE02794843}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FF2BC3C-E855-417F-88A8-52BE02794843}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA59001D-9DA4-4CF6-A07E-F3A194991537}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA59001D-9DA4-4CF6-A07E-F3A194991537}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA59001D-9DA4-4CF6-A07E-F3A194991537}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA59001D-9DA4-4CF6-A07E-F3A194991537}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDCD3B4C-9A1E-4260-ABFF-DBA84707308E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDCD3B4C-9A1E-4260-ABFF-DBA84707308E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDCD3B4C-9A1E-4260-ABFF-DBA84707308E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDCD3B4C-9A1E-4260-ABFF-DBA84707308E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

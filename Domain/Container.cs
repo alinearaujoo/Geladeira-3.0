@@ -7,48 +7,48 @@ namespace GeladeiraAPI.Domain
     // Representa um container dentro de um andar da geladeira
     public sealed class Container
     {
-        private readonly List<Item> _items; // Lista de itens armazenados no container
+        private readonly List<Item> _items; 
 
-        private const int MAX_POSICOES = 4; // Número máximo de posições para itens no container
+        private const int MAX_POSICOES = 4; 
 
         // Propriedade pública que representa o número do container
-        public int NumeroContainer { get; } 
+        public int NumeroContainer { get; }
 
         // Construtor privado para garantir que containers sejam criados apenas através do método de fábrica
         private Container(int numeroContainer) 
         {
             NumeroContainer = numeroContainer;
-            _items = []; // Inicializa a lista de itens
+            _items = []; 
             for (int i = 0; i < MAX_POSICOES; i++) 
             {
-                _items.Add(new Item()); // Adiciona itens vazios em cada posição
+                _items.Add(new Item()); 
             }
         }
 
         // Método de fábrica para criar um novo container
-        public static Container CriarContainer(int numeroContainer) => new(numeroContainer); // Retorna o container criado
+        public static Container CriarContainer(int numeroContainer) => new(numeroContainer); 
 
         // Método para adicionar um item em uma posição específica no container
         internal void AdicionarItem(int posicao, Item item) 
         {
             // Verifica se a posição está dentro do intervalo permitido
             if (posicao < 0 || posicao >= MAX_POSICOES) 
-                throw new Exception("Posição inválida."); // Lança exceção se a posição estiver fora do intervalo permitido
+                throw new Exception("Posição inválida."); 
 
             // Verifica se a posição já está ocupada
-            if (_items[posicao].IdItem != 0) // Verifica se o item existe
-                throw new Exception("Posição já ocupada."); // Lança exceção se a posição estiver ocupada
+            if (_items[posicao].IdItem != 0) 
+                throw new Exception("Posição já ocupada."); 
 
             // Adiciona o item na posição especificada
             _items[posicao] = item; 
         }
 
         // Método para remover um item de uma posição específica no container
-        internal void RemoverItem(int posicao) // Recebe a posição que deseja remover
+        internal void RemoverItem(int posicao) 
         {
             // Verifica se a posição está dentro do intervalo permitido
             if (posicao < 0 || posicao >= MAX_POSICOES) 
-                throw new Exception("Posição inválida."); // Lança exceção se a posição estiver fora do intervalo permitido
+                throw new Exception("Posição inválida.");
 
             // Remove o item da posição especificada, reinicializando-a
             _items[posicao] = new Item();
@@ -58,9 +58,9 @@ namespace GeladeiraAPI.Domain
         internal void LimparContainer()
         {
             // Reinicializa todas as posições do container
-            for (int i = 0; i < MAX_POSICOES; i++) // Itera sobre cada posição
+            for (int i = 0; i < MAX_POSICOES; i++) 
             {
-                _items[i] = new Item(); // Reinicializa o item da posição especificada
+                _items[i] = new Item(); 
             }
         }
 
@@ -68,19 +68,24 @@ namespace GeladeiraAPI.Domain
         // Método para imprimir os itens armazenados no container
         internal string ImprimirItens()
         {
-            StringBuilder sb = new(); // Usado para construir a string de saída
-            sb.AppendLine($"Container {NumeroContainer}"); // Adiciona informações do container à saída
+            StringBuilder sb = new(); 
+            sb.AppendLine($"Container {NumeroContainer}"); 
 
             // Itera sobre cada item e adiciona informações sobre itens não vazios
             for (int i = 0; i < _items.Count; i++) 
             {
-                var item = _items[i]; // Recebe o item da posição especificada
-                if (item.IdItem != 0) // Verifica se o item existe
+                var item = _items[i]; 
+                if (item.IdItem != 0) 
                 {
-                    sb.AppendLine($"  Posição {i}: {item.Descricao}"); // Adiciona descrição do item
+                    sb.AppendLine($"  Posição {i}: {item.Descricao}"); 
                 }
             }
-            return sb.ToString(); // Retorna a string com o conteúdo formatado
+            return sb.ToString(); 
+        }
+
+        public List<Item> Items()
+        {
+            return _items;
         }
     }
 }
